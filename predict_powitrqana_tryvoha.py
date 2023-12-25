@@ -2046,7 +2046,7 @@ for i, class_label in enumerate(model.classes_):
     all_df[f'Probability_{class_label}'] = all_probabilities[:, i]
 
 # Sort the DataFrame by 'DayOfWeek' and then by 'Hour'
-all_df.sort_values(by=['Probability_True'], inplace=True)
+all_df.sort_values(by=['DayOfWeek', 'Hour'], inplace=True)
 
 # Display the sorted DataFrame with prediction probabilities for all hours of all days
 pd.set_option('display.max_rows', None)
