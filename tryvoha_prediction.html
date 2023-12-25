@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Прогноз повітряної тривоги по місту 🇺🇦 Києву на наступний тиждень</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #e5e5e5;
+        }
+        .scrollable-container {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Прогноз повітряної тривоги по місту 🇺🇦 Києву на наступний тиждень</h2>
+        <div class="scrollable-container">
+            <table>
+                <!-- <thead>
+                    <tr>
+                        <th>Hour</th>
+                        <th>DayOfWeek</th>
+                        <th>Probability_True</th>
+                    </tr> 
+                </thead> -->
+                <tbody id="forecastTableBody">
+                    <!-- Table rows will be populated using JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Your data goes here
+        const rainData = [
+ {
+   "FIELD1": 1,
+   "Hour": 12,
+   "DayOfWeek": 6,
+   "Probability_True": 0.172998
+ },
+ {
+   "FIELD1": 114,
+   "Hour": 4,
+   "DayOfWeek": 1,
+   "Probability_True": 0.161665
+ },
+ {
+   "FIELD1": 109,
+   "Hour": 3,
+   "DayOfWeek": 3,
+   "Probability_True": 0.154505
+ },
+ {
+   "FIELD1": 8,
+   "Hour": 13,
+   "DayOfWeek": 6,
+   "Probability_True": 0.151546
+ },
+ {
+   "FIELD1": 92,
+   "Hour": 1,
+   "DayOfWeek": 7,
+   "Probability_True": 0.14843
+ },
+ {
+   "FIELD1": 15,
+   "Hour": 14,
+   "DayOfWeek": 6,
+   "Probability_True": 0.127667
+ },
+ {
+   "FIELD1": 84,
+   "Hour": 0,
+   "DayOfWeek": 6,
+   "Probability_True": 0.120918
+ },
+ {
+   "FIELD1": 167,
+   "Hour": 11,
+   "DayOfWeek": 5,
+   "Probability_True": 0.11937
+ },
+ {
+   "FIELD1": 12,
+   "Hour": 13,
+   "DayOfWeek": 3,
+   "Probability_True": 0.116233
+ },
+ {
+   "FIELD1": 120,
+   "Hour": 5,
+   "DayOfWeek": 7,
+   "Probability_True": 0.113387
+ },
+ {
+   "FIELD1": 99,
+   "Hour": 2,
+   "DayOfWeek": 7,
+   "Probability_True": 0.112093
+ },
+ {
+   "FIELD1": 32,
+   "Hour": 16,
+   "DayOfWeek": 2,
+   "Probability_True": 0.108609
+ },
+ {
+   "FIELD1": 85,
+   "Hour": 0,
+   "DayOfWeek": 7,
+   "Probability_True": 0.107891
+ },
+ {
+   "FIELD1": 112,
+   "Hour": 4,
+   "DayOfWeek": 6,
+   "Probability_True": 0.105519
+ },
+ {
+   "FIELD1": 105,
+   "Hour": 3,
+   "DayOfWeek": 6,
+   "Probability_True": 0.101176
+ },
+ {
+   "FIELD1": 123,
+   "Hour": 5,
+   "DayOfWeek": 3,
+   "Probability_True": 0.099552
+ },
+ {
+   "FIELD1": 140,
+   "Hour": 8,
+   "DayOfWeek": 6,
+   "Probability_True": 0.098575
+ },
+ {
+   "FIELD1": 139,
+   "Hour": 7,
+   "DayOfWeek": 5,
+   "Probability_True": 0.097213
+ },
+ {
+   "FIELD1": 161,
+   "Hour": 11,
+   "DayOfWeek": 6,
+   "Probability_True": 0.091061
+ },
+ {
+   "FIELD1": 77,
+   "Hour": 23,
+   "DayOfWeek": 5,
+   "Probability_True": 0.088304
+ },
+ {
+   "FIELD1": 24,
+   "Hour": 15,
+   "DayOfWeek": 1,
+   "Probability_True": 0.086104
+ },
+ {
+   "FIELD1": 19,
+   "Hour": 14,
+   "DayOfWeek": 3,
+   "Probability_True": 0.084893
+ },
+ {
+   "FIELD1": 81,
+   "Hour": 23,
+   "DayOfWeek": 2,
+   "Probability_True": 0.081316
+ },
+ {
+   "FIELD1": 0,
+   "Hour": 12,
+   "DayOfWeek": 5,
+   "Probability_True": 0.080831
+ },
+ {
+   "FIELD1": 10,
+   "Hour": 13,
+   "DayOfWeek": 1,
+   "Probability_True": 0.079167
+ },
+ {
+   "FIELD1": 3,
+   "Hour": 12,
+   "DayOfWeek": 1,
+   "Probability_True": 0.077497
+ },
+ {
+   "FIELD1": 116,
+   "Hour": 4,
+   "DayOfWeek": 3,
+   "Probability_True": 0.076172
+ },
+ {
+   "FIELD1": 98,
+   "Hour": 2,
+   "DayOfWeek": 6,
+   "Probability_True": 0.075701
+ },
+ {
+   "FIELD1": 18,
+   "Hour": 14,
+   "DayOfWeek": 2,
+   "Probability_True": 0.074138
+ },
+ {
+   "FIELD1": 5,
+   "Hour": 12,
+   "DayOfWeek": 3,
+   "Probability_True": 0.073176
+ },
+ {
+   "FIELD1": 113,
+   "Hour": 4,
+   "DayOfWeek": 7,
+   "Probability_True": 0.072262
+ },
+ {
+   "FIELD1": 91,
+   "Hour": 1,
+   "DayOfWeek": 6,
+   "Probability_True": 0.071618
+ },
+ {
+   "FIELD1": 102,
+   "Hour": 2,
+   "DayOfWeek": 3,
+   "Probability_True": 0.069839
+ },
+ {
+   "FIELD1": 7,
+   "Hour": 13,
+   "DayOfWeek": 5,
+   "Probability_True": 0.069292
+ },
+ {
+   "FIELD1": 127,
+   "Hour": 6,
+   "DayOfWeek": 7,
+   "Probability_True": 0.062286
+ },
+ {
+   "FIELD1": 6,
+   "Hour": 12,
+   "DayOfWeek": 4,
+   "Probability_True": 0.062099
+ },
+ {
+   "FIELD1": 90,
+   "Hour": 0,
+   "DayOfWeek": 5,
+   "Probability_True": 0.061561
+ },
+ {
+   "FIELD1": 119,
+   "Hour": 5,
+   "DayOfWeek": 6,
+   "Probability_True": 0.059823
+ },
+ {
+   "FIELD1": 42,
+   "Hour": 18,
+   "DayOfWeek": 5,
+   "Probability_True": 0.059359
+ },
+ {
+   "FIELD1": 124,
+   "Hour": 5,
+   "DayOfWeek": 4,
+   "Probability_True": 0.058068
+ },
+ {
+   "FIELD1": 62,
+   "Hour": 20,
+   "DayOfWeek": 4,
+   "Probability_True": 0.057554
+ },
+ {
+   "FIELD1": 25,
+   "Hour": 15,
+   "DayOfWeek": 2,
+   "Probability_True": 0.057497
+ },
+ {
+   "FIELD1": 9,
+   "Hour": 13,
+   "DayOfWeek": 7,
+   "Probability_True": 0.055901
+ },
+ {
+   "FIELD1": 20,
+   "Hour": 14,
+   "DayOfWeek": 4,
+   "Probability_True": 0.055255
+ },
+ {
+   "FIELD1": 70,
+   "Hour": 22,
+   "DayOfWeek": 5,
+   "Probability_True": 0.054421
+ },
+ {
+   "FIELD1": 163,
+   "Hour": 11,
+   "DayOfWeek": 1,
+   "Probability_True": 0.054379
+ },
+ {
+   "FIELD1": 133,
+   "Hour": 7,
+   "DayOfWeek": 6,
+   "Probability_True": 0.053805
+ },
+ {
+   "FIELD1": 106,
+   "Hour": 3,
+   "DayOfWeek": 7,
+   "Probability_True": 0.053081
+ },
+ {
+   "FIELD1": 166,
+   "Hour": 11,
+   "DayOfWeek": 4,
+   "Probability_True": 0.051794
+ },
+ {
+   "FIELD1": 121,
+   "Hour": 5,
+   "DayOfWeek": 1,
+   "Probability_True": 0.050571
+ },
+ {
+   "FIELD1": 83,
+   "Hour": 23,
+   "DayOfWeek": 4,
+   "Probability_True": 0.050108
+ },
+ {
+   "FIELD1": 78,
+   "Hour": 23,
+   "DayOfWeek": 6,
+   "Probability_True": 0.050038
+ },
+ {
+   "FIELD1": 22,
+   "Hour": 15,
+   "DayOfWeek": 6,
+   "Probability_True": 0.049736
+ },
+ {
+   "FIELD1": 14,
+   "Hour": 14,
+   "DayOfWeek": 5,
+   "Probability_True": 0.048866
+ },
+ {
+   "FIELD1": 39,
+   "Hour": 17,
+   "DayOfWeek": 2,
+   "Probability_True": 0.046806
+ },
+ {
+   "FIELD1": 126,
+   "Hour": 6,
+   "DayOfWeek": 6,
+   "Probability_True": 0.046679
+ },
+ {
+   "FIELD1": 138,
+   "Hour": 7,
+   "DayOfWeek": 4,
+   "Probability_True": 0.045603
+ },
+ {
+   "FIELD1": 155,
+   "Hour": 10,
+   "DayOfWeek": 7,
+   "Probability_True": 0.043273
+ },
+ {
+   "FIELD1": 86,
+   "Hour": 0,
+   "DayOfWeek": 1,
+   "Probability_True": 0.042921
+ },
+ {
+   "FIELD1": 16,
+   "Hour": 14,
+   "DayOfWeek": 7,
+   "Probability_True": 0.042161
+ },
+ {
+   "FIELD1": 72,
+   "Hour": 22,
+   "DayOfWeek": 7,
+   "Probability_True": 0.041173
+ },
+ {
+   "FIELD1": 88,
+   "Hour": 0,
+   "DayOfWeek": 3,
+   "Probability_True": 0.040071
+ },
+ {
+   "FIELD1": 13,
+   "Hour": 13,
+   "DayOfWeek": 4,
+   "Probability_True": 0.039376
+ },
+ {
+   "FIELD1": 49,
+   "Hour": 19,
+   "DayOfWeek": 5,
+   "Probability_True": 0.038852
+ },
+ {
+   "FIELD1": 48,
+   "Hour": 18,
+   "DayOfWeek": 4,
+   "Probability_True": 0.037395
+ },
+ {
+   "FIELD1": 146,
+   "Hour": 8,
+   "DayOfWeek": 5,
+   "Probability_True": 0.037333
+ },
+ {
+   "FIELD1": 67,
+   "Hour": 21,
+   "DayOfWeek": 2,
+   "Probability_True": 0.036029
+ },
+ {
+   "FIELD1": 131,
+   "Hour": 6,
+   "DayOfWeek": 4,
+   "Probability_True": 0.035392
+ },
+ {
+   "FIELD1": 61,
+   "Hour": 20,
+   "DayOfWeek": 3,
+   "Probability_True": 0.034337
+ },
+ {
+   "FIELD1": 41,
+   "Hour": 17,
+   "DayOfWeek": 4,
+   "Probability_True": 0.03246
+ },
+ {
+   "FIELD1": 130,
+   "Hour": 6,
+   "DayOfWeek": 3,
+   "Probability_True": 0.032385
+ },
+ {
+   "FIELD1": 160,
+   "Hour": 10,
+   "DayOfWeek": 5,
+   "Probability_True": 0.031946
+ },
+ {
+   "FIELD1": 117,
+   "Hour": 4,
+   "DayOfWeek": 4,
+   "Probability_True": 0.031208
+ },
+ {
+   "FIELD1": 35,
+   "Hour": 17,
+   "DayOfWeek": 5,
+   "Probability_True": 0.030313
+ },
+ {
+   "FIELD1": 145,
+   "Hour": 8,
+   "DayOfWeek": 4,
+   "Probability_True": 0.030074
+ },
+ {
+   "FIELD1": 118,
+   "Hour": 4,
+   "DayOfWeek": 5,
+   "Probability_True": 0.028437
+ },
+ {
+   "FIELD1": 27,
+   "Hour": 15,
+   "DayOfWeek": 4,
+   "Probability_True": 0.025614
+ },
+ {
+   "FIELD1": 17,
+   "Hour": 14,
+   "DayOfWeek": 1,
+   "Probability_True": 0.025574
+ },
+ {
+   "FIELD1": 156,
+   "Hour": 10,
+   "DayOfWeek": 1,
+   "Probability_True": 0.025468
+ },
+ {
+   "FIELD1": 125,
+   "Hour": 5,
+   "DayOfWeek": 5,
+   "Probability_True": 0.024795
+ },
+ {
+   "FIELD1": 74,
+   "Hour": 22,
+   "DayOfWeek": 2,
+   "Probability_True": 0.024762
+ },
+ {
+   "FIELD1": 26,
+   "Hour": 15,
+   "DayOfWeek": 3,
+   "Probability_True": 0.023452
+ },
+ {
+   "FIELD1": 162,
+   "Hour": 11,
+   "DayOfWeek": 7,
+   "Probability_True": 0.022055
+ },
+ {
+   "FIELD1": 31,
+   "Hour": 16,
+   "DayOfWeek": 1,
+   "Probability_True": 0.021818
+ },
+ {
+   "FIELD1": 53,
+   "Hour": 19,
+   "DayOfWeek": 2,
+   "Probability_True": 0.0197
+ },
+ {
+   "FIELD1": 11,
+   "Hour": 13,
+   "DayOfWeek": 2,
+   "Probability_True": 0.015901
+ },
+ {
+   "FIELD1": 57,
+   "Hour": 20,
+   "DayOfWeek": 6,
+   "Probability_True": 0.014421
+ },
+ {
+   "FIELD1": 153,
+   "Hour": 9,
+   "DayOfWeek": 5,
+   "Probability_True": 0.014295
+ },
+ {
+   "FIELD1": 71,
+   "Hour": 22,
+   "DayOfWeek": 6,
+   "Probability_True": 0.012876
+ },
+ {
+   "FIELD1": 132,
+   "Hour": 6,
+   "DayOfWeek": 5,
+   "Probability_True": 0.012313
+ },
+ {
+   "FIELD1": 147,
+   "Hour": 9,
+   "DayOfWeek": 6,
+   "Probability_True": 0.010681
+ },
+ {
+   "FIELD1": 93,
+   "Hour": 1,
+   "DayOfWeek": 1,
+   "Probability_True": 0.010534
+ },
+ {
+   "FIELD1": 56,
+   "Hour": 20,
+   "DayOfWeek": 5,
+   "Probability_True": 0.010494
+ },
+ {
+   "FIELD1": 34,
+   "Hour": 16,
+   "DayOfWeek": 4,
+   "Probability_True": 0.010446
+ },
+ {
+   "FIELD1": 63,
+   "Hour": 21,
+   "DayOfWeek": 5,
+   "Probability_True": 0.009063
+ },
+ {
+   "FIELD1": 75,
+   "Hour": 22,
+   "DayOfWeek": 3,
+   "Probability_True": 0.007584
+ },
+ {
+   "FIELD1": 154,
+   "Hour": 10,
+   "DayOfWeek": 6,
+   "Probability_True": 0.006951
+ },
+ {
+   "FIELD1": 152,
+   "Hour": 9,
+   "DayOfWeek": 4,
+   "Probability_True": 0.004619
+ },
+ {
+   "FIELD1": 97,
+   "Hour": 1,
+   "DayOfWeek": 5,
+   "Probability_True": 0.003658
+ },
+ {
+   "FIELD1": 68,
+   "Hour": 21,
+   "DayOfWeek": 3,
+   "Probability_True": 0.003533
+ },
+ {
+   "FIELD1": 107,
+   "Hour": 3,
+   "DayOfWeek": 1,
+   "Probability_True": 0.003478
+ },
+ {
+   "FIELD1": 79,
+   "Hour": 23,
+   "DayOfWeek": 7,
+   "Probability_True": 0.001032
+ },
+ {
+   "FIELD1": 111,
+   "Hour": 3,
+   "DayOfWeek": 5,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 134,
+   "Hour": 7,
+   "DayOfWeek": 7,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 36,
+   "Hour": 17,
+   "DayOfWeek": 6,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 43,
+   "Hour": 18,
+   "DayOfWeek": 6,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 50,
+   "Hour": 19,
+   "DayOfWeek": 6,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 96,
+   "Hour": 1,
+   "DayOfWeek": 4,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 64,
+   "Hour": 21,
+   "DayOfWeek": 6,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 89,
+   "Hour": 0,
+   "DayOfWeek": 4,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 38,
+   "Hour": 17,
+   "DayOfWeek": 1,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 82,
+   "Hour": 23,
+   "DayOfWeek": 3,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 54,
+   "Hour": 19,
+   "DayOfWeek": 3,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 47,
+   "Hour": 18,
+   "DayOfWeek": 3,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 149,
+   "Hour": 9,
+   "DayOfWeek": 1,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 142,
+   "Hour": 8,
+   "DayOfWeek": 1,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 135,
+   "Hour": 7,
+   "DayOfWeek": 1,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 128,
+   "Hour": 6,
+   "DayOfWeek": 1,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 141,
+   "Hour": 8,
+   "DayOfWeek": 7,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 104,
+   "Hour": 2,
+   "DayOfWeek": 5,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 148,
+   "Hour": 9,
+   "DayOfWeek": 7,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 40,
+   "Hour": 17,
+   "DayOfWeek": 3,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 33,
+   "Hour": 16,
+   "DayOfWeek": 3,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 2,
+   "Hour": 12,
+   "DayOfWeek": 7,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 100,
+   "Hour": 2,
+   "DayOfWeek": 1,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 144,
+   "Hour": 8,
+   "DayOfWeek": 3,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 23,
+   "Hour": 15,
+   "DayOfWeek": 7,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 30,
+   "Hour": 16,
+   "DayOfWeek": 7,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 37,
+   "Hour": 17,
+   "DayOfWeek": 7,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 44,
+   "Hour": 18,
+   "DayOfWeek": 7,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 51,
+   "Hour": 19,
+   "DayOfWeek": 7,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 58,
+   "Hour": 20,
+   "DayOfWeek": 7,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 65,
+   "Hour": 21,
+   "DayOfWeek": 7,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 151,
+   "Hour": 9,
+   "DayOfWeek": 3,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 29,
+   "Hour": 16,
+   "DayOfWeek": 6,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 45,
+   "Hour": 18,
+   "DayOfWeek": 1,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 52,
+   "Hour": 19,
+   "DayOfWeek": 1,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 59,
+   "Hour": 20,
+   "DayOfWeek": 1,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 60,
+   "Hour": 20,
+   "DayOfWeek": 2,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 76,
+   "Hour": 22,
+   "DayOfWeek": 4,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 69,
+   "Hour": 21,
+   "DayOfWeek": 4,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 46,
+   "Hour": 18,
+   "DayOfWeek": 2,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 55,
+   "Hour": 19,
+   "DayOfWeek": 4,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 4,
+   "Hour": 12,
+   "DayOfWeek": 2,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 164,
+   "Hour": 11,
+   "DayOfWeek": 2,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 21,
+   "Hour": 15,
+   "DayOfWeek": 5,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 28,
+   "Hour": 16,
+   "DayOfWeek": 5,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 158,
+   "Hour": 10,
+   "DayOfWeek": 3,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 157,
+   "Hour": 10,
+   "DayOfWeek": 2,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 95,
+   "Hour": 1,
+   "DayOfWeek": 3,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 159,
+   "Hour": 10,
+   "DayOfWeek": 4,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 137,
+   "Hour": 7,
+   "DayOfWeek": 3,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 150,
+   "Hour": 9,
+   "DayOfWeek": 2,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 143,
+   "Hour": 8,
+   "DayOfWeek": 2,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 136,
+   "Hour": 7,
+   "DayOfWeek": 2,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 129,
+   "Hour": 6,
+   "DayOfWeek": 2,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 122,
+   "Hour": 5,
+   "DayOfWeek": 2,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 115,
+   "Hour": 4,
+   "DayOfWeek": 2,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 108,
+   "Hour": 3,
+   "DayOfWeek": 2,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 101,
+   "Hour": 2,
+   "DayOfWeek": 2,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 94,
+   "Hour": 1,
+   "DayOfWeek": 2,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 87,
+   "Hour": 0,
+   "DayOfWeek": 2,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 80,
+   "Hour": 23,
+   "DayOfWeek": 1,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 110,
+   "Hour": 3,
+   "DayOfWeek": 4,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 103,
+   "Hour": 2,
+   "DayOfWeek": 4,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 73,
+   "Hour": 22,
+   "DayOfWeek": 1,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 66,
+   "Hour": 21,
+   "DayOfWeek": 1,
+   "Probability_True": 0
+ },
+ {
+   "FIELD1": 165,
+   "Hour": 11,
+   "DayOfWeek": 3,
+   "Probability_True": 0
+ }
+];
+const currentDate = new Date();
+const currentTimestamp = currentDate.getTime();
+const currentDayOfWeek = currentDate.getDay();
+const currentHour = currentDate.getHours();
+//const currentHour = 3;
+
+
+function getProbabilityIndication(probability) {
+    if (probability === 0) {
+        return '🟢 Не очікується';
+    } else if (probability < 0.1) {
+        return '🟡 Низька імовірність тривоги';
+    } else if (probability < 0.5) {
+        return '⚠️ Середня імовірність тривоги';
+    } else if (probability < 0.8) {
+        return '🔴 Висока імовірність тривоги';
+    } else {
+        return '🔴 Надвисока імовірність тривоги';
+    }
+}
+
+        // Function to populate the table rows
+        function populateTable() {
+            const tableBody = document.getElementById('forecastTableBody');
+            tableBody.innerHTML = '';
+
+            rainData.sort((a, b) => {
+                
+                timeDifferenceA = (a.DayOfWeek) * 24 + a.Hour ;
+                timeDifferenceB = (b.DayOfWeek) * 24 + b.Hour ;
+                if (a.DayOfWeek < currentDayOfWeek || (a.DayOfWeek == currentDayOfWeek && a.Hour < currentHour)) {
+                    timeDifferenceA += 7 * 24;
+                }
+                if (b.DayOfWeek < currentDayOfWeek ||  (b.DayOfWeek == currentDayOfWeek && b.Hour < currentHour)) {
+                    timeDifferenceB += 7 * 24;
+                }
+    
+
+    return timeDifferenceA -   timeDifferenceB;
+});
+
+            rainData.forEach(entry => {
+         timestamp = new Date();
+        timestamp.setHours(entry.Hour, 0, 0, 0);
+
+         dayOfWeek = timestamp.toLocaleDateString(undefined, { weekday: 'long' });
+
+
+         const options = { weekday: 'long' }; // 'long' specifies full weekday name
+
+// Create a Date object with a specific day of the week (in this case, Wednesday)
+        const date = new Date(2023, 0, 1 + entry.DayOfWeek); // Month is 0-indexed, so 0 represents January
+
+// Use Intl.DateTimeFormat to format the day of the week
+        formattedDayOfWeek = new Intl.DateTimeFormat('uk', options).format(date);
+        if (entry.DayOfWeek == currentDayOfWeek && entry.Hour >= currentHour) {
+                    formattedDayOfWeek = 'сьогодні';
+                } else if (entry.DayOfWeek == currentDayOfWeek + 1 || (entry.DayOfWeek == 1 && currentDayOfWeek == 7)) {
+                    formattedDayOfWeek = 'завтра';
+                }
+
+                formattedHour = entry.Hour.toString().padStart(2, '0');
+                if (entry.Hour == currentHour && entry.DayOfWeek == currentDayOfWeek) {
+                    formattedHour = 'Зараз';
+                }
+
+                const probabilityIndication = getProbabilityIndication(entry.Probability_True);
+
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${formattedDayOfWeek}</td>
+                    <td>${formattedHour}</td>
+                    <td>${probabilityIndication}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Initial call to populate the table
+        populateTable();
+    </script>
+</body>
+</html>
