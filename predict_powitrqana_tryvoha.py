@@ -2,11 +2,11 @@ import datetime
 from tokenize import String
 from datetime import date, datetime
 import pandas as pd
-import random
-
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, confusion_matrix, f1_score, precision_score, recall_score
 from typing import List, Tuple, Dict, Any
 from datetime import datetime, timedelta
 
@@ -1813,9 +1813,10 @@ dataSet: String = """
 05:51 28.02.22	🔴 Повітряна тривога!
 """
 
+look_back = relativedelta(weeks=7)
+
 def calculateDaysBetweenDates(begin, end):
     return (end - begin).days
-
 
 expected = [
     ("12:36 25.12.23", "🟢 Відбій тривоги", "2 години 5 хвилин"),
@@ -1974,10 +1975,10 @@ else:
 # At 00:20 20.12.23, the alarm was on.
 
 end_date = datetime.strptime(allAlerts[0][0], "%H:%M %d.%m.%y")
-print(end_date)
+print("Until: ", end_date)
 
-start_date = end_date.replace(month=end_date.month - 4)
-print(start_date)
+start_date = end_date - look_back
+print("Since: ", start_date)
 
 def timestamps(start_date, end_date):
     current_date = start_date
@@ -1999,47 +2000,54 @@ data['Status'] = labels
 # Create a DataFrame
 df = pd.DataFrame(data)
 
-# Feature engineering
-df['Hour'] = df['Time'].dt.hour
-df['DayOfWeek'] = df['Time'].dt.dayofweek + 1  # Adding 1 to match the range (1-7)
+def feature_engineering(df):
+    df['Hour'] = df['Time'].dt.hour
+    df['DayOfWeek'] = df['Time'].dt.dayofweek + 1  # Adding 1 to match the range (1-7)
+    df['DayOfYear'] = df['Time'].dt.day_of_year
+    df['Year'] = df['Time'].dt.year
+    # df['Weight'] = 2024*365 - df['Year']*365-df['DayOfYear']  # Adjust the weighting based on your data
+    return df
 
+df = feature_engineering(df)
 # Display the constructed labeled data
 print(df)
 
 # Selecting features and target variable
-X = df[['Hour', 'DayOfWeek']]
+X = df[['Hour', 'DayOfWeek'
+        # , 'Weight'
+        ]]
 y = df['Status']
 
 # Splitting the data into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+one_week = 7*24*60
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=one_week, random_state=42, shuffle=False)
 
 # Training a RandomForestClassifier
 model = RandomForestClassifier(random_state=42)
 model.fit(X_train, y_train)
 
+print(f"X_train: {X_train}")
+print(f"X_test: {X_test}")
+
 # Making predictions on the test set
 y_pred = model.predict(X_test)
-
-# Evaluating the model
-accuracy = accuracy_score(y_test, y_pred)
-print(f"Accuracy: {accuracy:.2%}")
 
 # Create a DataFrame with all hours of all days of the week
 all_hours = range(24)
 all_days = range(1, 8)  # Assuming dayofweek range is 1-7
 
 all_combinations = [(hour, day) for hour in all_hours for day in all_days]
-all_timestamps = [start_date + timedelta(hours=hour, days=day-1) for hour, day in all_combinations]
+all_timestamps = [end_date + timedelta(hours=hour, days=day-1) for hour, day in all_combinations]
 
 all_data = {'Time': all_timestamps}
 all_df = pd.DataFrame(all_data)
 
-# Feature engineering for the new DataFrame
-all_df['Hour'] = all_df['Time'].dt.hour
-all_df['DayOfWeek'] = all_df['Time'].dt.dayofweek + 1  # Adding 1 to match the range (1-7)
+all_df = feature_engineering(all_df)
 
 # Making predictions (probabilities) for all hours of all days
-all_probabilities = model.predict_proba(all_df[['Hour', 'DayOfWeek']])
+all_probabilities = model.predict_proba(all_df[['Hour', 'DayOfWeek'
+                                                # , 'Weight'
+                                                ]])
 
 # Adding prediction probabilities to the DataFrame
 for i, class_label in enumerate(model.classes_):
@@ -2058,3 +2066,16 @@ print(all_df[selected_columns])
 # Reset options to default after printing
 pd.reset_option('display.max_rows')
 pd.reset_option('display.max_columns')
+
+# Evaluating the model
+acc = accuracy_score(y_test, y_pred)
+precision = precision_score(y_test, y_pred)
+recall = recall_score(y_test, y_pred)
+f1 = f1_score(y_test, y_pred)
+conf_matrix = confusion_matrix(y_test, y_pred)
+
+print(f"Accuracy: {acc}")
+print(f"Precision: {precision}")
+print(f"Recall: {recall}")
+print(f"F1 Score: {f1}")
+print(f"Confusion Matrix:\n{conf_matrix}")
