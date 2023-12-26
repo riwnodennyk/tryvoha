@@ -87,7 +87,6 @@
 
   <script>
     // Your data goes here
-    var rainData = [];
     const currentDate = new Date();
     const currentTimestamp = currentDate.getTime();
     const currentDayOfWeek = currentDate.getDay();
@@ -127,9 +126,7 @@
         .then(jsonData => {
           // Now you can use the jsonData object
           console.log('Data from JSON file:', jsonData);
-          rainData = jsonData;
-
-          rainData.sort((a, b) => {
+          jsonData.sort((a, b) => {
             timeDifferenceA = (a.DayOfWeek) * 24 + a.Hour;
             timeDifferenceB = (b.DayOfWeek) * 24 + b.Hour;
             if (a.DayOfWeek < currentDayOfWeek || (a.DayOfWeek == currentDayOfWeek && a.Hour < currentHour)) {
@@ -141,7 +138,7 @@
             return timeDifferenceA - timeDifferenceB;
           });
 
-          rainData.forEach(entry => {
+          jsonData.forEach(entry => {
             timestamp = new Date();
             timestamp.setHours(entry.Hour, 0, 0, 0);
 
