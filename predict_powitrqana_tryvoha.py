@@ -12,7 +12,7 @@ from datetime import datetime, timedelta
 from file1 import dataSetString
 import json
 
-look_back = relativedelta(weeks=5)
+look_back = relativedelta(weeks=2)
 print("Look back: ", look_back)
 
 def calculateDaysBetweenDates(begin, end):
@@ -141,6 +141,7 @@ pd.set_option('display.max_columns', None)
 
 selected_columns = ['Hour', 'DayOfWeek', 'Probability_True']
 csv_data = all_df[selected_columns]
+
 def convertCsvDataToJson(csv_data):
     result = []
     for index, row in csv_data.iterrows():
@@ -153,9 +154,12 @@ def convertCsvDataToJson(csv_data):
 
 def writeJsonIntoFile(json_data):
     with open('data.json', 'w') as f:
-        json.dump(json_data, f, indent=2)
-        
-writeJsonIntoFile(str(convertCsvDataToJson(csv_data)))
+        f.write(json.dumps(json_data, indent=2))
+
+# Assuming you have a DataFrame named 'csv_data'
+
+
+writeJsonIntoFile(convertCsvDataToJson(csv_data))
 #print(csv_data)
 
 # Reset options to default after printing
