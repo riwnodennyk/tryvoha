@@ -22,12 +22,12 @@
   {
     "Hour": 4.0,
     "DayOfWeek": 1.0,
-    "Probability_True": 0.10278343780043678
+    "Probability_True": 0.10879421756518955
   },
   {
     "Hour": 5.0,
     "DayOfWeek": 1.0,
-    "Probability_True": 0.0020245056375764133
+    "Probability_True": 0.0
   },
   {
     "Hour": 6.0,
@@ -62,27 +62,27 @@
   {
     "Hour": 12.0,
     "DayOfWeek": 1.0,
-    "Probability_True": 0.1164898676539193
+    "Probability_True": 0.1112624625911563
   },
   {
     "Hour": 13.0,
     "DayOfWeek": 1.0,
-    "Probability_True": 0.14268946810715513
+    "Probability_True": 0.14457839152448537
   },
   {
     "Hour": 14.0,
     "DayOfWeek": 1.0,
-    "Probability_True": 0.008814485536018341
+    "Probability_True": 0.011327069062285134
   },
   {
     "Hour": 15.0,
     "DayOfWeek": 1.0,
-    "Probability_True": 0.1331549859874799
+    "Probability_True": 0.12855538835806393
   },
   {
     "Hour": 16.0,
     "DayOfWeek": 1.0,
-    "Probability_True": 0.07325704059131187
+    "Probability_True": 0.0696179982917032
   },
   {
     "Hour": 17.0,
@@ -187,27 +187,27 @@
   {
     "Hour": 13.0,
     "DayOfWeek": 2.0,
-    "Probability_True": 0.044660392443068214
+    "Probability_True": 0.04538336726089155
   },
   {
     "Hour": 14.0,
     "DayOfWeek": 2.0,
-    "Probability_True": 0.11679899983125347
+    "Probability_True": 0.11907577388833668
   },
   {
     "Hour": 15.0,
     "DayOfWeek": 2.0,
-    "Probability_True": 0.14390858824156205
+    "Probability_True": 0.13794130323083745
   },
   {
     "Hour": 16.0,
     "DayOfWeek": 2.0,
-    "Probability_True": 0.14165235594422124
+    "Probability_True": 0.14061489477213598
   },
   {
     "Hour": 17.0,
     "DayOfWeek": 2.0,
-    "Probability_True": 0.04847388441277298
+    "Probability_True": 0.04597294817147793
   },
   {
     "Hour": 18.0,
@@ -227,22 +227,22 @@
   {
     "Hour": 21.0,
     "DayOfWeek": 2.0,
-    "Probability_True": 0.08458508110135425
+    "Probability_True": 0.07010491214489885
   },
   {
     "Hour": 22.0,
     "DayOfWeek": 2.0,
-    "Probability_True": 0.05220923639524104
+    "Probability_True": 0.049250170574791356
   },
   {
     "Hour": 23.0,
     "DayOfWeek": 2.0,
-    "Probability_True": 0.04575206152735487
+    "Probability_True": 0.04963052475174817
   },
   {
     "Hour": 0.0,
     "DayOfWeek": 3.0,
-    "Probability_True": 0.033448126563403194
+    "Probability_True": 0.024103761135462795
   },
   {
     "Hour": 1.0,
@@ -257,7 +257,7 @@
   {
     "Hour": 3.0,
     "DayOfWeek": 3.0,
-    "Probability_True": 0.08707513052822775
+    "Probability_True": 0.09431429585884285
   },
   {
     "Hour": 4.0,
@@ -302,22 +302,22 @@
   {
     "Hour": 12.0,
     "DayOfWeek": 3.0,
-    "Probability_True": 0.15147981792725132
+    "Probability_True": 0.15187021087856956
   },
   {
     "Hour": 13.0,
     "DayOfWeek": 3.0,
-    "Probability_True": 0.2898917940555299
+    "Probability_True": 0.2916306797204131
   },
   {
     "Hour": 14.0,
     "DayOfWeek": 3.0,
-    "Probability_True": 0.21725238721598486
+    "Probability_True": 0.21521983013305346
   },
   {
     "Hour": 15.0,
     "DayOfWeek": 3.0,
-    "Probability_True": 0.010304147875884543
+    "Probability_True": 0.011122105731243887
   },
   {
     "Hour": 16.0,
@@ -352,7 +352,7 @@
   {
     "Hour": 22.0,
     "DayOfWeek": 3.0,
-    "Probability_True": 0.018739552236707206
+    "Probability_True": 0.01099287642975114
   },
   {
     "Hour": 23.0,
@@ -402,12 +402,12 @@
   {
     "Hour": 8.0,
     "DayOfWeek": 4.0,
-    "Probability_True": 0.07381827916409446
+    "Probability_True": 0.07333705927409462
   },
   {
     "Hour": 9.0,
     "DayOfWeek": 4.0,
-    "Probability_True": 0.014780777656125005
+    "Probability_True": 0.010091441845381117
   },
   {
     "Hour": 10.0,
@@ -417,42 +417,42 @@
   {
     "Hour": 11.0,
     "DayOfWeek": 4.0,
-    "Probability_True": 0.13010005891132004
+    "Probability_True": 0.1302472583516697
   },
   {
     "Hour": 12.0,
     "DayOfWeek": 4.0,
-    "Probability_True": 0.14491183495073684
+    "Probability_True": 0.13765693130189377
   },
   {
     "Hour": 13.0,
     "DayOfWeek": 4.0,
-    "Probability_True": 0.1116435118878306
+    "Probability_True": 0.11833988350489145
   },
   {
     "Hour": 14.0,
     "DayOfWeek": 4.0,
-    "Probability_True": 0.11779192738984408
+    "Probability_True": 0.12038349809536505
   },
   {
     "Hour": 15.0,
     "DayOfWeek": 4.0,
-    "Probability_True": 0.06008585380021245
+    "Probability_True": 0.061348756971416465
   },
   {
     "Hour": 16.0,
     "DayOfWeek": 4.0,
-    "Probability_True": 0.03380986412344773
+    "Probability_True": 0.03060139757501398
   },
   {
     "Hour": 17.0,
     "DayOfWeek": 4.0,
-    "Probability_True": 0.07383281488030181
+    "Probability_True": 0.06753499454974983
   },
   {
     "Hour": 18.0,
     "DayOfWeek": 4.0,
-    "Probability_True": 0.0829077558340156
+    "Probability_True": 0.08141402854879738
   },
   {
     "Hour": 19.0,
@@ -512,17 +512,17 @@
   {
     "Hour": 6.0,
     "DayOfWeek": 5.0,
-    "Probability_True": 0.03022896041052521
+    "Probability_True": 0.023216243836607395
   },
   {
     "Hour": 7.0,
     "DayOfWeek": 5.0,
-    "Probability_True": 0.25161965379916107
+    "Probability_True": 0.2464586706392304
   },
   {
     "Hour": 8.0,
     "DayOfWeek": 5.0,
-    "Probability_True": 0.07475407308176375
+    "Probability_True": 0.06829167739980377
   },
   {
     "Hour": 9.0,
@@ -532,27 +532,27 @@
   {
     "Hour": 10.0,
     "DayOfWeek": 5.0,
-    "Probability_True": 0.07425373632449699
+    "Probability_True": 0.07232444129284894
   },
   {
     "Hour": 11.0,
     "DayOfWeek": 5.0,
-    "Probability_True": 0.28169179024441265
+    "Probability_True": 0.28755973062907464
   },
   {
     "Hour": 12.0,
     "DayOfWeek": 5.0,
-    "Probability_True": 0.20172431023194065
+    "Probability_True": 0.21025515148622495
   },
   {
     "Hour": 13.0,
     "DayOfWeek": 5.0,
-    "Probability_True": 0.14206150157483147
+    "Probability_True": 0.1361456295942357
   },
   {
     "Hour": 14.0,
     "DayOfWeek": 5.0,
-    "Probability_True": 0.014052898697999312
+    "Probability_True": 0.012349232620411458
   },
   {
     "Hour": 15.0,
@@ -592,62 +592,62 @@
   {
     "Hour": 22.0,
     "DayOfWeek": 5.0,
-    "Probability_True": 0.05945554101754737
+    "Probability_True": 0.05772976628197944
   },
   {
     "Hour": 23.0,
     "DayOfWeek": 5.0,
-    "Probability_True": 0.17650883504376744
+    "Probability_True": 0.176180700152089
   },
   {
     "Hour": 0.0,
     "DayOfWeek": 6.0,
-    "Probability_True": 0.24660459052920414
+    "Probability_True": 0.23941763366044239
   },
   {
     "Hour": 1.0,
     "DayOfWeek": 6.0,
-    "Probability_True": 0.19115284340172298
+    "Probability_True": 0.19345620329412638
   },
   {
     "Hour": 2.0,
     "DayOfWeek": 6.0,
-    "Probability_True": 0.19671169315882892
+    "Probability_True": 0.19911236253944098
   },
   {
     "Hour": 3.0,
     "DayOfWeek": 6.0,
-    "Probability_True": 0.25379129592560784
+    "Probability_True": 0.25371487465664694
   },
   {
     "Hour": 4.0,
     "DayOfWeek": 6.0,
-    "Probability_True": 0.2592681820986
+    "Probability_True": 0.2548220050139065
   },
   {
     "Hour": 5.0,
     "DayOfWeek": 6.0,
-    "Probability_True": 0.1436111751619449
+    "Probability_True": 0.1440834976660309
   },
   {
     "Hour": 6.0,
     "DayOfWeek": 6.0,
-    "Probability_True": 0.14082945687249762
+    "Probability_True": 0.1476162574047621
   },
   {
     "Hour": 7.0,
     "DayOfWeek": 6.0,
-    "Probability_True": 0.14415122818162707
+    "Probability_True": 0.14569940724088773
   },
   {
     "Hour": 8.0,
     "DayOfWeek": 6.0,
-    "Probability_True": 0.24700825433753748
+    "Probability_True": 0.23524095907396736
   },
   {
     "Hour": 9.0,
     "DayOfWeek": 6.0,
-    "Probability_True": 0.027902221476197364
+    "Probability_True": 0.03594358577425599
   },
   {
     "Hour": 10.0,
@@ -662,22 +662,22 @@
   {
     "Hour": 12.0,
     "DayOfWeek": 6.0,
-    "Probability_True": 0.3135725876574647
+    "Probability_True": 0.2941296449009879
   },
   {
     "Hour": 13.0,
     "DayOfWeek": 6.0,
-    "Probability_True": 0.40204993607004164
+    "Probability_True": 0.40603235406307414
   },
   {
     "Hour": 14.0,
     "DayOfWeek": 6.0,
-    "Probability_True": 0.33616825226361996
+    "Probability_True": 0.33366306229413084
   },
   {
     "Hour": 15.0,
     "DayOfWeek": 6.0,
-    "Probability_True": 0.1235701660138744
+    "Probability_True": 0.1275965374009152
   },
   {
     "Hour": 16.0,
@@ -702,7 +702,7 @@
   {
     "Hour": 20.0,
     "DayOfWeek": 6.0,
-    "Probability_True": 0.040941547804868514
+    "Probability_True": 0.04735710795024744
   },
   {
     "Hour": 21.0,
@@ -712,32 +712,32 @@
   {
     "Hour": 22.0,
     "DayOfWeek": 6.0,
-    "Probability_True": 0.0329600288057237
+    "Probability_True": 0.03504004055992044
   },
   {
     "Hour": 23.0,
     "DayOfWeek": 6.0,
-    "Probability_True": 0.13047438508873335
+    "Probability_True": 0.13299715538545573
   },
   {
     "Hour": 0.0,
     "DayOfWeek": 7.0,
-    "Probability_True": 0.2758188874951129
+    "Probability_True": 0.2748375515547841
   },
   {
     "Hour": 1.0,
     "DayOfWeek": 7.0,
-    "Probability_True": 0.28717940311844997
+    "Probability_True": 0.278152852213773
   },
   {
     "Hour": 2.0,
     "DayOfWeek": 7.0,
-    "Probability_True": 0.1454369796357582
+    "Probability_True": 0.14168097524597487
   },
   {
     "Hour": 3.0,
     "DayOfWeek": 7.0,
-    "Probability_True": 0.049456614686468996
+    "Probability_True": 0.04475951627295499
   },
   {
     "Hour": 4.0,
@@ -772,12 +772,12 @@
   {
     "Hour": 10.0,
     "DayOfWeek": 7.0,
-    "Probability_True": 0.10265534266949902
+    "Probability_True": 0.10332467374954517
   },
   {
     "Hour": 11.0,
     "DayOfWeek": 7.0,
-    "Probability_True": 0.05869340877339693
+    "Probability_True": 0.05458352262843538
   },
   {
     "Hour": 12.0,
@@ -787,12 +787,12 @@
   {
     "Hour": 13.0,
     "DayOfWeek": 7.0,
-    "Probability_True": 0.13882693098717308
+    "Probability_True": 0.13356720337341424
   },
   {
     "Hour": 14.0,
     "DayOfWeek": 7.0,
-    "Probability_True": 0.11961013740608827
+    "Probability_True": 0.11930928797110246
   },
   {
     "Hour": 15.0,

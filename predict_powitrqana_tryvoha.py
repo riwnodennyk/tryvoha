@@ -60,13 +60,15 @@ print("Until: ", end_date)
 start_date = end_date - look_back
 print("Since: ", start_date)
 
+minutes_per_interval = 5
+
 def timestamps(start_date, end_date):
     current_date = start_date
     timestamp_array = []
 
     while current_date <= end_date:
         timestamp_array.append(current_date)
-        current_date += timedelta(minutes=1)
+        current_date += timedelta(minutes=minutes_per_interval)
 
     return timestamp_array
 
@@ -99,7 +101,7 @@ X = df[['Hour', 'DayOfWeek'
 y = df['Status']
 
 # Splitting the data into training and testing sets
-one_week = 7*24*60
+one_week = 7*24*int(60/minutes_per_interval)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=one_week, random_state=42, shuffle=False)
 
 # Training a RandomForestClassifier
