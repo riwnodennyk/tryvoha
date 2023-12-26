@@ -140,7 +140,23 @@ pd.set_option('display.max_rows', None)
 pd.set_option('display.max_columns', None)
 
 selected_columns = ['Hour', 'DayOfWeek', 'Probability_True']
-# print(all_df[selected_columns])
+csv_data = all_df[selected_columns]
+def convertCsvDataToJson(csv_data):
+    result = []
+    for index, row in csv_data.iterrows():
+        result.append({
+            "Hour": row["Hour"],
+            "DayOfWeek": row["DayOfWeek"],
+            "Probability_True": row["Probability_True"]
+        })
+    return result
+
+def writeJsonIntoFile(json_data):
+    with open('data.json', 'w') as f:
+        f.write(json_data)
+
+writeJsonIntoFile(str(convertCsvDataToJson(csv_data)))
+print(csv_data)
 
 # Reset options to default after printing
 pd.reset_option('display.max_rows')
