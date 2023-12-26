@@ -1107,25 +1107,6 @@ function getProbabilityIndication(probability) {
         function populateTable() {
             const tableBody = document.getElementById('forecastTableBody');
             tableBody.innerHTML = '';
-
-            function readRainDataFromLocalJsonFileCalledDataJson() {
-                return new Promise((resolve, reject) => {
-                    const request = new XMLHttpRequest();
-                    request.open('GET', 'data.json');
-                    request.onload = () => {
-                        if (request.status === 200) {
-                            resolve(JSON.parse(request.responseText));
-                        } else {
-                            reject(Error('JSON file didn\'t load successfully; error code:' + request.statusText));
-                        }
-                    };
-                    request.onerror = () => {
-                        reject(Error('There was a network error.'));
-                    };
-                    request.send();
-                });
-            }
-
             
 
 // Specify the path to your JSON file (assuming it's named data.json)

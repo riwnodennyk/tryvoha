@@ -10,7 +10,7 @@ from sklearn.metrics import accuracy_score, confusion_matrix, f1_score, precisio
 from typing import List, Tuple, Dict, Any
 from datetime import datetime, timedelta
 from file1 import dataSetString
-
+import json
 
 look_back = relativedelta(weeks=5)
 print("Look back: ", look_back)
@@ -153,10 +153,10 @@ def convertCsvDataToJson(csv_data):
 
 def writeJsonIntoFile(json_data):
     with open('data.json', 'w') as f:
-        f.write(json_data)
-
+        json.dump(json_data, f, indent=2)
+        
 writeJsonIntoFile(str(convertCsvDataToJson(csv_data)))
-print(csv_data)
+#print(csv_data)
 
 # Reset options to default after printing
 pd.reset_option('display.max_rows')
