@@ -1,6 +1,7 @@
 
 from tokenize import String
 
+# https://kyiv.digital/storage/air-alert/stats.html
 
 dataSetString: String = """
 12:36 25.12.23	🟢 Відбій тривоги	2 години 5 хвилин
