@@ -12,7 +12,8 @@ from datetime import datetime, timedelta
 from file1 import dataSetString
 import json
 
-look_back = relativedelta(weeks=2)
+look_back = relativedelta(weeks=8)
+
 print("Look back: ", look_back)
 
 def calculateDaysBetweenDates(begin, end):
