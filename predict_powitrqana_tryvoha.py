@@ -122,6 +122,28 @@ model.fit(X_train, y_train)
 # Making predictions on the test set
 y_pred = model.predict(X_test)
 
+def evaluateModel():
+    # Evaluating the model
+    threshold = 0
+    # print(f"X_test: {X_test}")
+    probabilities = model.predict_proba(X_test)[:, 1]  # Assuming positive class is at index 1
+    # print(f"Probabilities: {probabilities}")
+    predictions = (probabilities > threshold).astype(int)
+
+    acc = accuracy_score(y_test, predictions)
+    print(f"Accuracy: {acc:.2%}")
+    precision = precision_score(y_test, predictions)
+    recall = recall_score(y_test, predictions)
+    f1 = f1_score(y_test, predictions)
+    print(f"Precision: {precision:.2%}")
+    print(f"Recall: {recall:.2%}")
+    print(f"F1 Score: {f1:.2%}")
+
+    conf_matrix = confusion_matrix(y_test, y_pred)
+    print(f"Confusion Matrix:\n{conf_matrix}")
+    
+evaluateModel()
+
 # Create a DataFrame with all hours of all days of the week
 all_hours = range(24)
 all_days = range(1, 8)  # Assuming dayofweek range is 1-7
@@ -180,24 +202,3 @@ writeJsonIntoFile(convertCsvDataToJson(csv_data))
 # Reset options to default after printing
 pd.reset_option('display.max_rows')
 pd.reset_option('display.max_columns')
-
-# Evaluating the model
-
-
-threshold = 0
-# print(f"X_test: {X_test}")
-probabilities = model.predict_proba(X_test)[:, 1]  # Assuming positive class is at index 1
-# print(f"Probabilities: {probabilities}")
-predictions = (probabilities > threshold).astype(int)
-
-acc = accuracy_score(y_test, predictions)
-print(f"Accuracy: {acc:.2%}")
-precision = precision_score(y_test, predictions)
-recall = recall_score(y_test, predictions)
-f1 = f1_score(y_test, predictions)
-print(f"Precision: {precision:.2%}")
-print(f"Recall: {recall:.2%}")
-print(f"F1 Score: {f1:.2%}")
-
-conf_matrix = confusion_matrix(y_test, y_pred)
-print(f"Confusion Matrix:\n{conf_matrix}")
