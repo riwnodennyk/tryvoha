@@ -11,8 +11,13 @@ from typing import List, Tuple, Dict, Any
 from datetime import datetime, timedelta
 from file1 import dataSetString
 import json
+import pytz
 
 look_back = relativedelta(weeks=8)
+
+now = datetime.now()
+ukraine_tz = pytz.timezone("Europe/Kiev")
+moscow_tz = pytz.timezone("Europe/Moscow")
 
 print("Look back: ", look_back)
 
@@ -39,12 +44,15 @@ def parsedDataSplitIntoLines(parsedData):
 
 allAlerts = parseDataSetIntoExpectedFormat(dataSetString)
 
+def differenceBetweenUkraineAndMoscowTimeZonesInHours(when):
+    return int((moscow_tz.localize(when)-ukraine_tz.localize(when)).total_seconds() / 3600)
+
 def is_alarm_on(timestamp, data = allAlerts):
     for record in data:
         time, status, duration = record
         record_time = datetime.strptime(time, "%H:%M %d.%m.%y")
 
-        if timestamp >= record_time:
+        if timestamp >= record_time - timedelta(hours=differenceBetweenUkraineAndMoscowTimeZonesInHours(record_time)):
             return status == "🔴 Повітряна тривога!"
 
     return None  # Return None if the timestamp is not found in the data
@@ -83,10 +91,10 @@ data['Status'] = labels
 df = pd.DataFrame(data)
 
 def feature_engineering(df):
-    df['Hour'] = df['Time'].dt.hour
-    df['DayOfWeek'] = df['Time'].dt.dayofweek + 1  # Adding 1 to match the range (1-7)
-    df['DayOfYear'] = df['Time'].dt.day_of_year
-    df['Year'] = df['Time'].dt.year
+    df['Moscow_Hour'] = df['Time'].dt.hour
+    df['Moscow_DayOfWeek'] = df['Time'].dt.dayofweek + 1  # Adding 1 to match the range (1-7)
+    # df['DayOfYear'] = df['Time'].dt.day_of_year
+    # df['Year'] = df['Time'].dt.year
     # df['Weight'] = 2024*365 - df['Year']*365-df['DayOfYear']  # Adjust the weighting based on your data
     return df
 
@@ -95,7 +103,7 @@ df = feature_engineering(df)
 # print(df)
 
 # Selecting features and target variable
-X = df[['Hour', 'DayOfWeek'
+X = df[['Moscow_Hour', 'Moscow_DayOfWeek'
         # , 'Weight'
         ]]
 y = df['Status']
@@ -127,7 +135,7 @@ all_df = pd.DataFrame(all_data)
 all_df = feature_engineering(all_df)
 
 # Making predictions (probabilities) for all hours of all days
-all_probabilities = model.predict_proba(all_df[['Hour', 'DayOfWeek'
+all_probabilities = model.predict_proba(all_df[['Moscow_Hour', 'Moscow_DayOfWeek'
                                                 # , 'Weight'
                                                 ]])
 
@@ -136,21 +144,25 @@ for i, class_label in enumerate(model.classes_):
     all_df[f'Probability_{class_label}'] = all_probabilities[:, i]
 
 # Sort the DataFrame by 'DayOfWeek' and then by 'Hour'
-all_df.sort_values(by=['DayOfWeek', 'Hour'], inplace=True)
+all_df.sort_values(by=['Moscow_DayOfWeek', 'Moscow_Hour'], inplace=True)
 
 # Display the sorted DataFrame with prediction probabilities for all hours of all days
 pd.set_option('display.max_rows', None)
 pd.set_option('display.max_columns', None)
 
-selected_columns = ['Hour', 'DayOfWeek', 'Probability_True']
+selected_columns = ['Moscow_Hour', 'Moscow_DayOfWeek', 'Probability_True']
 csv_data = all_df[selected_columns]
 
 def convertCsvDataToJson(csv_data):
     result = []
+    timeDifferenceBetweenUkraineAndMoscow = differenceBetweenUkraineAndMoscowTimeZonesInHours(now)
     for index, row in csv_data.iterrows():
+        ukraineHour = row["Moscow_Hour"] + timeDifferenceBetweenUkraineAndMoscow
+        ukraineDayOfWeek = row["Moscow_DayOfWeek"] if ukraineHour >= 0 else (row["Moscow_DayOfWeek"] - 2) % 7 + 1
+        ukraineHour = ukraineHour % 24
         result.append({
-            "Hour": row["Hour"],
-            "DayOfWeek": row["DayOfWeek"],
+            "Hour": ukraineHour,
+            "DayOfWeek": ukraineDayOfWeek,
             "Probability_True": row["Probability_True"]
         })
     return result
