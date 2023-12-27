@@ -67,7 +67,7 @@ timestamp_to_check = datetime(2023, 12, 19, 23, 59, 0)
 result = is_alarm_on(timestamp_to_check)
 
 
-end_date = ukraineToMoscowTime(datetime.strptime(allAlerts[0][0], "%H:%M %d.%m.%y"))
+end_date = ukraineToMoscowTime(now).replace(minute=0, second=0, microsecond= 0)
 print("Until [Moscow time]: ", end_date)
 
 start_date = end_date - look_back
@@ -144,7 +144,7 @@ def evaluateModel():
     print(f"Recall: {recall:.2%}")
     print(f"F1 Score: {f1:.2%}")
 
-    conf_matrix = confusion_matrix(y_test, y_pred)
+    conf_matrix = confusion_matrix(y_test, predictions)
     print(f"Confusion Matrix:\n{conf_matrix}")
     
 evaluateModel()
