@@ -73,7 +73,7 @@ print("Until [Moscow time]: ", end_date)
 start_date = end_date - look_back
 print("Since [Moscow time]: ", start_date)
 
-minutes_per_interval = 5
+minutes_per_interval = 30
 
 def timestamps(start_date, end_date):
     current_date = start_date
@@ -89,7 +89,7 @@ timestamp_array = timestamps(start_date, end_date)
 
 # Construct labeled data
 data = {'Time': timestamp_array}
-labels = [is_alarm_on(timestamp) for timestamp in timestamp_array]
+labels = [is_alarm_on(timestamp) or is_alarm_on(timestamp + timedelta(minutes=minutes_per_interval)) for timestamp in timestamp_array]
 data['Status'] = labels
 
 # Create a DataFrame
