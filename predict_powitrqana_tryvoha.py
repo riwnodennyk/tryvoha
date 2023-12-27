@@ -14,13 +14,17 @@ from file1 import dataSetString
 import json
 import pytz
 
+minutes_per_interval = 30
+threshold = 0
 look_back = relativedelta(weeks=8)
+print("Minutes per interval: ", minutes_per_interval)
+print("Threshold: ", threshold)
+print("Look back: ", look_back)
 
 now = datetime.now()
 ukraine_tz = pytz.timezone("Europe/Kiev")
 moscow_tz = pytz.timezone("Europe/Moscow")
 
-print("Look back: ", look_back)
 
 def calculateDaysBetweenDates(begin, end):
     return (end - begin).days
@@ -73,7 +77,6 @@ print("Until [Moscow time]: ", end_date)
 start_date = end_date - look_back
 print("Since [Moscow time]: ", start_date)
 
-minutes_per_interval = 30
 
 def timestamps(start_date, end_date):
     current_date = start_date
@@ -89,7 +92,13 @@ timestamp_array = timestamps(start_date, end_date)
 
 # Construct labeled data
 data = {'Time': timestamp_array}
-labels = [is_alarm_on(timestamp) or is_alarm_on(timestamp + timedelta(minutes=minutes_per_interval)) for timestamp in timestamp_array]
+scanForBeforeAndAfter = True
+print("Scan for before and after: ", scanForBeforeAndAfter)
+
+if(scanForBeforeAndAfter):
+    labels = [is_alarm_on(timestamp) or is_alarm_on(timestamp + timedelta(minutes=minutes_per_interval)) or is_alarm_on(timestamp - timedelta(minutes=minutes_per_interval)) for timestamp in timestamp_array]
+else:
+    labels = [is_alarm_on(timestamp) for timestamp in timestamp_array]
 data['Status'] = labels
 
 # Create a DataFrame
@@ -129,7 +138,6 @@ y_pred = model.predict(X_test)
 
 def evaluateModel():
     # Evaluating the model
-    threshold = 0
     # print(f"X_test: {X_test}")
     probabilities = model.predict_proba(X_test)[:, 1]  # Assuming positive class is at index 1
     # print(f"Probabilities: {probabilities}")
