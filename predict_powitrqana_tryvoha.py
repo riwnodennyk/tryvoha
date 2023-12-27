@@ -1,6 +1,7 @@
 import datetime
 from tokenize import String
 from datetime import date, datetime
+import numpy as np
 import pandas as pd
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
@@ -52,21 +53,25 @@ def is_alarm_on(timestamp, data = allAlerts):
         time, status, duration = record
         record_time = datetime.strptime(time, "%H:%M %d.%m.%y")
 
-        if timestamp >= record_time - timedelta(hours=differenceBetweenUkraineAndMoscowTimeZonesInHours(record_time)):
+        if timestamp >= ukraineToMoscowTime(record_time):
+            # Return None if the timestamp is not found in the data
             return status == "🔴 Повітряна тривога!"
 
-    return None  # Return None if the timestamp is not found in the data
+    return None 
+
+def ukraineToMoscowTime(time):
+    return time - timedelta(hours=differenceBetweenUkraineAndMoscowTimeZonesInHours(time)) 
 
 # Example usage:
 timestamp_to_check = datetime(2023, 12, 19, 23, 59, 0)
 result = is_alarm_on(timestamp_to_check)
 
 
-end_date = datetime.strptime(allAlerts[0][0], "%H:%M %d.%m.%y")
-print("Until: ", end_date)
+end_date = ukraineToMoscowTime(datetime.strptime(allAlerts[0][0], "%H:%M %d.%m.%y"))
+print("Until [Moscow time]: ", end_date)
 
 start_date = end_date - look_back
-print("Since: ", start_date)
+print("Since [Moscow time]: ", start_date)
 
 minutes_per_interval = 5
 
@@ -143,6 +148,12 @@ def evaluateModel():
     print(f"Confusion Matrix:\n{conf_matrix}")
     
 evaluateModel()
+
+# nan_indices = np.isnan(X)
+# print("Indices with NaN values:", np.where(nan_indices))
+
+# # Retraining the model on the entire data
+# model.fit(X, y)
 
 # Create a DataFrame with all hours of all days of the week
 all_hours = range(24)
