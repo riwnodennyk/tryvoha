@@ -89,7 +89,7 @@
     // Your data goes here
     const currentDate = new Date();
     const currentTimestamp = currentDate.getTime();
-    const currentDayOfWeek = currentDate.getDay();
+    const currentDayOfWeek = currentDate.getDay() || 7;
     const currentHour = currentDate.getHours();
     //const currentHour = 3;
 
@@ -125,7 +125,6 @@
         })
         .then(jsonData => {
           // Now you can use the jsonData object
-          console.log('Data from JSON file:', jsonData);
           jsonData.sort((a, b) => {
             timeDifferenceA = (a.DayOfWeek) * 24 + a.Hour;
             timeDifferenceB = (b.DayOfWeek) * 24 + b.Hour;
@@ -137,6 +136,7 @@
             }
             return timeDifferenceA - timeDifferenceB;
           });
+          console.log('Data from JSON file:', jsonData);
 
           jsonData.forEach(entry => {
             timestamp = new Date();
