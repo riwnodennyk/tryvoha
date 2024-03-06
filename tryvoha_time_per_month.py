@@ -1,33 +1,17 @@
 import datetime
-from tokenize import String
-from datetime import date, datetime
-import numpy as np
+from datetime import datetime
 import pandas as pd
 from datetime import datetime
-from dateutil.relativedelta import relativedelta
-from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score, confusion_matrix, f1_score, precision_score, recall_score
-from typing import List, Tuple, Dict, Any
 from datetime import datetime, timedelta
-from kyiv_data import tryvoha_kyiv_data
-import json
-import pytz
 import datetime
-from tokenize import String
-from datetime import date, datetime
+from datetime import datetime
 import numpy as np
 import pandas as pd
 from datetime import datetime
-from dateutil.relativedelta import relativedelta
-from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score, confusion_matrix, f1_score, precision_score, recall_score
-from typing import List, Tuple, Dict, Any
 from datetime import datetime, timedelta
 import json
 import pytz
-from tryvoha_parser import differenceMoscowUkraine, is_alarm_on, ukraineToMoscowTime
+from tryvoha_parser import is_alarm_on, ukraineToMoscowTime
 
 minutes_per_interval = 60
 threshold = 0
@@ -39,7 +23,6 @@ print("Since [Moscow time]: ", start_date)
 
 end_date = ukraineToMoscowTime(datetime(2024, 3, 1, 0, 0, 0))
 print("Until [Moscow time]: ", end_date)
-
 
 def timestamps(start_date, end_date):
     current_date = start_date

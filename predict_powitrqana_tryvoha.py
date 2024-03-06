@@ -40,11 +40,9 @@ now = datetime.now()
 ukraine_tz = pytz.timezone("Europe/Kiev")
 moscow_tz = pytz.timezone("Europe/Moscow")
 
-
 # Example usage:
 timestamp_to_check = datetime(2023, 12, 19, 23, 59, 0)
 result = is_alarm_on(timestamp_to_check)
-
 
 end_date = ukraineToMoscowTime(now).replace(minute=0, second=0, microsecond= 0)
 print("Until [Moscow time]: ", end_date)
