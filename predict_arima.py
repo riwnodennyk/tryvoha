@@ -12,7 +12,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, confusion_matrix, f1_score, precision_score, recall_score
 from typing import List, Tuple, Dict, Any
 from datetime import datetime, timedelta
-from file1 import dataSetString
+from kyiv_data import tryvoha_kyiv_data
 from statsmodels.tsa.arima.model import ARIMA
 import json
 import pytz
@@ -55,7 +55,7 @@ def parsedDataSplitIntoLines(parsedData):
             result.append("\n")
     return result
 
-allAlerts = parseDataSetIntoExpectedFormat(dataSetString)
+allAlerts = parseDataSetIntoExpectedFormat(tryvoha_kyiv_data)
 
 df = pd.DataFrame(allAlerts)
 df.columns = ['datetime', 'status']

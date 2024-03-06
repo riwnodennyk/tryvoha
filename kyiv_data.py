@@ -3,7 +3,7 @@ from tokenize import String
 
 # https://kyiv.digital/storage/air-alert/stats.html
 
-dataSetString: String = """
+tryvoha_kyiv_data: String = """
 09:06 06.03.24	🟢 Відбій тривоги	23 хвилини
 08:42 06.03.24	🔴 Повітряна тривога!	
 19:42 03.03.24	🟢 Відбій тривоги	11 хвилин
