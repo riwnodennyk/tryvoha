@@ -21,7 +21,7 @@ print("Threshold: ", threshold)
 start_date = ukraineToMoscowTime(datetime(2022, 2, 1, 0, 0, 0))
 print("Since [Moscow time]: ", start_date)
 
-end_date = ukraineToMoscowTime(datetime(2024, 3, 1, 0, 0, 0))
+end_date = ukraineToMoscowTime(datetime.now())
 print("Until [Moscow time]: ", end_date)
 
 def timestamps(start_date, end_date):
@@ -45,6 +45,20 @@ def average_per_month(data):
     data = data.set_index('Time')
     data = data.resample('ME').mean()
     return data
+
+
+def average_per_week(data):
+    data['Time'] = pd.to_datetime(data['Time'])
+    data = data.set_index('Time')
+    data = data.resample('W').mean()
+    return data
+
+
+average_per_week = average_per_week(pd.DataFrame(data))
+print(average_per_week)
+
+# write to file inluding Time column
+average_per_week.to_csv('tryvoha_time_per_week.csv')
 
 average_per_month = average_per_month(pd.DataFrame(data))
 print(average_per_month)
