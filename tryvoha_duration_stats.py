@@ -18,7 +18,7 @@ threshold = 0
 print("Minutes per interval: ", minutes_per_interval)
 print("Threshold: ", threshold)
 
-start_date = ukraineToMoscowTime(datetime(2024, 2, 1, 0, 0, 0))
+start_date = ukraineToMoscowTime(datetime(2024, 3, 1, 0, 0, 0))
 print("Since [Moscow time]: ", start_date)
 
 end_date = ukraineToMoscowTime(datetime.now())
