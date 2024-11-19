@@ -18,7 +18,7 @@ threshold = 0
 print("Minutes per interval: ", minutes_per_interval)
 print("Threshold: ", threshold)
 
-start_date = ukraineToMoscowTime(datetime(2024, 3, 1, 0, 0, 0))
+start_date = ukraineToMoscowTime(datetime(2024, 6, 1, 0, 0, 0))
 print("Since [Moscow time]: ", start_date)
 
 end_date = ukraineToMoscowTime(datetime.now())
@@ -43,7 +43,7 @@ data['Status'] = [is_alarm_on(timestamp) for timestamp in timestamp_array]
 def average_per_month(data):
     data['Time'] = pd.to_datetime(data['Time'])
     data = data.set_index('Time')
-    data = data.resample('ME').mean()
+    data = data.resample('M').mean()
     return data
 
 
